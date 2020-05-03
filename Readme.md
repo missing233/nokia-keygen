@@ -5,7 +5,7 @@
  * nico - [https://pwn.army](https://pwn.army) - [https://twitter.com/ndaprela](https://twitter.com/ndaprela)
 
 ## Intro
-In recent years in Italy the development of Fiber To The Home technology has finally started, with the public participated company OpenFiber doing most of the infrastructure work. The network is then resold trough the many partner providers.
+In recent years in Italy the development of Fiber To The Home technology has finally started, with the public traded company OpenFiber doing most of the infrastructure work. The network is then resold through the many partner providers.
 
 It has been the case also for other countries in the world and almost everywhere the standard for residential optical connection is GPON. [This research by Pierre Kim is extremely useful to better understand the standard and the network topology](https://pierrekim.github.io/blog/2016-11-01-gpon-ftth-networks-insecurity.html) and also provides a nice overview of its security.
 
@@ -133,7 +133,7 @@ The main SoC and the GPON module are made by Broadcom.
 Both 2.4Ghz and 5Ghz wifi are supported and seems to be made by Quantenna. They seem to be powered by the Topaz chipset, [which has recently been added to the Linux Kernel](https://patchwork.kernel.org/patch/10630331/) for which there's a lack of binaries in `linux-firmware` but there's an [interesting discussion here](https://patchwork.kernel.org/patch/10643357/). Additional code might be present in the [Google Fiber repository](https://gfiber.googlesource.com/kernel/skids/+/master/drivers/topaz).
 
 ## A Complete Mess
-There are already known backdoors like described here [https://www.websec.ca/publication/Blog/backdoors-in-Zhone-GPON-2520-and-Alcatel-Lucent-I240Q](https://www.websec.ca/publication/Blog/backdoors-in-Zhone-GPON-2520-and-Alcatel-Lucent-I240Q). While my device does not have the SSH service exposed it does have telnet on port `23`. A root shell can be easily obtained by simply logging in via `ONTUSER:SUGAR2A041`.
+There are already known backdoors like described [here(https://www.websec.ca/publication/Blog/backdoors-in-Zhone-GPON-2520-and-Alcatel-Lucent-I240Q). While my device does not have the SSH service exposed it does have telnet on port `23`. A root shell can be easily obtained by simply logging in via `ONTUSER:SUGAR2A041`.
 
 Once logged in it easy to find that the manufacturer actually committed all specific customizations to every device. There are indeed plenty of files not useful for this specific model, a dozen different web interfaces and configuration files for any ISP on the table above. There's also a lot of debugging mess, like this one:
 
@@ -193,7 +193,7 @@ That's how bad it is and [Wind experienced it first hand when in 2017](https://w
 There are two useful configuration tools called `cfgcli` and `ritool`.
 
 ### Cfgcli
-`cfgcli` is used to configure all the properties od the user in an XML like structure. It can be used to retrieve VOIP, PPP, TR69, SLID and many more information.
+`cfgcli` is used to configure all the properties of the user in an XML like structure. It can be used to retrieve VOIP, PPP, TR69, SLID and many more information.
 
 A simple `cfgcli dump` will return all properties.
 
@@ -255,7 +255,7 @@ cfgcli <command> [option] [cmd_args...]; command to run.
 
 ### Ritool
 Apparently all devices and boards have the same flash content except for some specific data, like the serial number, the operator id and so on.
-These OEM binaries manage this data through a lib called `/lib/libri.so` which interacts with a device `/dev/ri_drv`. This device is controlled by a proprietary Broadcom kernel module called `/bcm/bin/ri.ko`. What this module does is basically reading and writing values to an i2c eeprom.
+These OEM binaries manage this data through a lib called `/lib/libri.so` which interacts with a device `/dev/ri_drv`. This device is controlled by a proprietary Broadcom kernel module called `/bcm/bin/ri.ko`. What this module does is basically reading and writing values to an I2C EEPROM.
 
 The usage is really basic
 ```
@@ -325,7 +325,7 @@ So, for instance, with
 ```
 ritool set OperatorID AXTEL
 ```
-Is possible to brand the modem for Mexico's Axtel. To force the modem to reconfigure after a change a factory reset is necessary. To do so press the shortest button on the back for at least 10 seconds while it is powered on.
+It's possible to brand the modem for Mexico's Axtel. To force the modem to reconfigure after a change a factory reset is necessary. To do so press the shortest button on the back for at least 10 seconds while it is powered on.
 
 
 
@@ -335,7 +335,7 @@ Is possible to brand the modem for Mexico's Axtel. To force the modem to reconfi
 
 While it is impossible to know in advance, most of the time this kind of device generates a unique password following a hardcoded algorithm. It is extremely rare for the manufacturer to manually insert secrets in every device and the automatic generation solution may be secure given that the algorithm is seeded by data unknown to a potential attacker.
 
-Bad examples include passwords generated based on MAC Address while password based on serials are often better, given that an attacker has no way to know it and it is not derived from other known data. In this case however the serial is partially predictable and partially known to an attacker thanks to its inclusion in SSID so a secure implementation should use something else.
+Bad examples include passwords generated based on MAC Address while password based on serials are often better, given that an attacker has no way to know it and it is not derived from other known data. In this case however the serial is partially predictable and partially known to an attacker thanks to its inclusion in the SSID so a secure implementation should use something else.
 
 Note also that a WPA Key always comprised only of ten digits can be cracked using [Hashcat](https://hashcat.net/hashcat/) with a GTX 1070 in less than 10 hours.
 
@@ -394,11 +394,11 @@ In this case, if we search for the corresponding C code inside `cfgmgr` we can f
 snprintf(ssidName,0x40,"ALHN-%s",__n + 0x74c4ee);
 ```
 
-We leave to the reader the pleasure to reverse the XML and the binary for a complete and detailed understanding of what is going on (BONUS: lots of cleartext hardcoded credentials can be found during this process...)
+We leave to the reader the pleasure of reversing the XML and the binary for a complete and detailed understanding of what is going on (BONUS: lots of cleartext hardcoded credentials can be found during this process...)
 
 For what we are concerned there are just a few ideas that we need to make clear.
 
-First of all, these are not exactly format strings. By inspecting the code/doing test with `ritool` is pretty immediate to understand that the meaning of the most used"format strings" is the following:
+First of all, these are not exactly format strings. By inspecting the code/doing test with `ritool` it's immediate to understand that the meaning of the most used"format strings" is the following:
 
 - %4s: lower 2 bytes of the serial code, represented in hex
 - %4m: lower 2 bytes of the MAC address, represented in hex
@@ -420,7 +420,7 @@ Essentially we are now talking about all the WLANs which use a format string con
 
 This also works for the WLANs which have `fri=alhn_genssid1` and use `gen_mgntlongpw_and_wanpw` for the password generation.
 
-The following is the decompiled code we can get from Ghidra with some manual analysis hints and variable renaming.
+Below there is the decompiled code we can get from Ghidra with some manual analysis hints and variable renaming.
 
 ```
 /* WARNING: Could not reconcile some variable overlaps */
