@@ -506,7 +506,7 @@ def genpwd_longpasswd(oui, serialnum):
 
     #wanpasswd = base64.b32encode(bytes(bytearray(md5_secret1[:16] + md5_secret2[:3]))).decode("ascii")[:30]
 
-    lower = upper = i = 0
+    lower = upper = 0
 
     for i in range(8):
         upper = (lower >> 0x18 | ((upper << 8)&0xffffffff))&0xffffffff
