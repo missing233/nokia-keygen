@@ -45,7 +45,7 @@ Technicolor, along with Alcatel-Lucent, Nokia and Huawei are the leading manufac
 | LAOS | Laos | Sky Telecom | Unknown | Unknown | `SKYTEL-%4s` |
 | VIVA | Bulgaria | Vivacom | Unknown | Unknown | `VIVACOM_FiberNet` |
 | PXSF | Belgium | Belgacom | Unknown | Unknown | Unspecified |
-| OCIT | Ivory Coast | Orange Ivory Coast | Unknown | Unknown | `ORANGEFIBER-%4s` |
+| OCIT | Ivory Coast | Orange Ivory Coast | Nokia | G-240W-A | `ORANGEFIBER-%4s` |
 
 ## FCC Infos
 Different enclosures or slight variants of the same board can be identified by looking at the [documents published by Nokia for the FCC](https://fccid.io/2ADZR).
