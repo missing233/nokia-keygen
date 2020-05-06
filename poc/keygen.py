@@ -62,5 +62,6 @@ for s in ssids:
         for r in s.split("[A-F0-9]{4}"):
             serialBytes = serialBytes.replace(r, "")
         for i in range(0xffff):
-            print(genpwd_longpasswd(oui, "{:04x}{}".format(i, serialBytes)))
+            candidate = genpwd_longpasswd(oui, "{:04x}{}".format(i, serialBytes))
+            print(f"{candidate:010}")
         break
