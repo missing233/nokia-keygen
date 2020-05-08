@@ -13,6 +13,7 @@ This type of connection requires different equipment than ADSL/VDSL and thus spe
 
 Technicolor, along with Alcatel-Lucent, Nokia and Huawei are the leading manufactures of these devices and the suppliers for ISPs. Unsurprisingly, many different devices from even different companies have the same components and sometimes even share some software stack: below is a noncomprehensive table of confirmed and suspected devices having the same common problems described later. Apparently there's also a reseller called Zhone that customizes the same CPE for some ISPs. Eltex might be another one.
 
+_UPDATE:_ Thanks to some contributions some ISPs not in the original XML files have been added and other have been updated.
 
 | CODE | Country | ISP | Manufacturer | Model | SSID Format  |
 |---|---|---|---|---|---|
@@ -43,9 +44,11 @@ Technicolor, along with Alcatel-Lucent, Nokia and Huawei are the leading manufac
 | LATT | Latvia | Lattelekom | Unknown | Unknown | `ALHN-%s` |
 | JPNX | Japan | Unknown | Unknown | Unknown | `ALHN-%s` |
 | LAOS | Laos | Sky Telecom | Unknown | Unknown | `SKYTEL-%4s` |
-| VIVA | Bulgaria | Vivacom | Unknown | Unknown | `VIVACOM_FiberNet` |
+| VIVA | Bulgaria | Vivacom | Unknown | Unknown | `VIVACOM_FiberNet-%4s` |
 | PXSF | Belgium | Belgacom | Unknown | Unknown | Unspecified |
 | OCIT | Ivory Coast | Orange Ivory Coast | Nokia | G-240W-A | `ORANGEFIBER-%4s` |
+| Unknown | Caraibes | Canalbox Caraibes | Unknown | Unknown | `CANALBOX-%4s` |
+| Unknown | Poland | Inea | Unknown | Unknown | `INEA-%4s` |
 
 ## FCC Infos
 Different enclosures or slight variants of the same board can be identified by looking at the [documents published by Nokia for the FCC](https://fccid.io/2ADZR).
